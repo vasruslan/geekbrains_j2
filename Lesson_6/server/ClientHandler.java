@@ -26,6 +26,7 @@ public class ClientHandler {
                         while (true) {
                             String str = in.readUTF();
                             if (str.equals("/end")) {
+                                sendMsg(str);
                                 break;
                             }
                             server.broadCastMsg(str);
@@ -49,6 +50,7 @@ public class ClientHandler {
                             e.printStackTrace();
                         }
                     }
+                    server.unsubscribe(ClientHandler.this);
                 }
             }).start();
 
