@@ -1,4 +1,4 @@
-package Lesson_6.Server;
+package Server;
 
 import java.sql.SQLException;
 

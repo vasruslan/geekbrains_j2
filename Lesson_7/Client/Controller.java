@@ -1,4 +1,4 @@
-package Lesson_6.Client;
+package Client;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
