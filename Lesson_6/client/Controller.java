@@ -1,14 +1,11 @@
 package Lesson_6.client;
 
-import com.sun.org.apache.xml.internal.security.Init;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -49,11 +46,24 @@ public class Controller implements Initializable {
                     try {
                         while (true) {
                             String str = in.readUTF();
+                            if (str.equals("/end")) {
+                                break;
+                            }
                             textArea.appendText(str + "\n");
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
                     } finally {
+                        try {
+                            in.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                            out.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                         try {
                             socket.close();
                         } catch (IOException e) {
@@ -76,4 +86,17 @@ public class Controller implements Initializable {
             e.printStackTrace();
         }
     }
+
+    public Socket getSocket() {
+        return socket;
+    }
+
+    public void sendOffline() {
+        try {
+            out.writeUTF("/end");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
