@@ -10,12 +10,16 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+        Parent root = loader.load();
         primaryStage.setTitle("geekbrains chat");
 
         Scene scene = new Scene(root,   500, 450);
 
         Controller controller = loader.getController();
+        //primaryStage.setOpacity(0.8f);
+        primaryStage.setOpacity(controller.setTransparent());
         primaryStage.setScene(scene);
         primaryStage.show();
 

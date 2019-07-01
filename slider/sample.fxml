@@ -11,6 +11,9 @@
 <VBox fx:controller="sample.Controller" xmlns:fx="http://javafx.com/fxml" alignment="center">
     <stylesheets><URL value="@/css/Style.css"></URL> </stylesheets>
 
+    <Slider onMouseDragged="#setTransparent" fx:id="slider" min="0.3f" max="1f"
+            value="1f"/>
+
     <TextArea fx:id="textArea" editable="false" VBox.vgrow="ALWAYS"></TextArea>
     <HBox>
         <TextField fx:id="textField" onAction="#sendMsg" HBox.hgrow="ALWAYS" promptText="Введите сообщение..."/>
