@@ -7,7 +7,7 @@
 
 
 <?import javafx.scene.control.PasswordField?>
-<VBox alignment="center" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.121" fx:controller="Lesson_6.Client.Controller" >
+<VBox alignment="center" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.121" fx:controller="Client.Controller" >
 
     <!--верхняя панель для авторизации-->
     <HBox fx:id="upperPanel">

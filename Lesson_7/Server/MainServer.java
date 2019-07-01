@@ -1,4 +1,4 @@
-package Lesson_6.Server;
+package Server;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -52,17 +52,26 @@ public class MainServer {
 
     // подписываем клиента на рассылку
     public void subscribe(ClientHandler client) {
+
         clients.add(client);
     }
 
     // отписываем клиента от рассылки сообщений
     public void unsubscribe(ClientHandler client){
+
         clients.remove(client);
     }
 
     public void broadcastMsg(String msg) {
         for (ClientHandler o: clients) {
             o.sendMsg(msg);
+        }
+    }
+
+    public void sendPrivateMsg(String nick, String msg) {
+        for (ClientHandler o: clients) {
+            if (o.getNick().equals(nick)) {
+                o.sendMsg(msg);}
         }
     }
 

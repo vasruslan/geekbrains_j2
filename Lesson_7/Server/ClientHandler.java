@@ -1,4 +1,4 @@
-package Lesson_6.Server;
+package Server;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -12,6 +12,10 @@ public class ClientHandler {
     private Socket socket;
     private MainServer server;
     private String nick;
+
+    public String getNick() {
+        return nick;
+    }
 
     public ClientHandler(Socket socket, MainServer server) {
         try {
@@ -47,11 +51,18 @@ public class ClientHandler {
                         // блок для отправки сообщений
                         while (true) {
                             String str = in.readUTF();
+
+                            if(str.startsWith("/w")) {
+                                String[] tokens = str.split(" ");
+                                server.sendPrivateMsg(tokens[1], nick + " " + tokens[2]);
+                            }
+                            else server.broadcastMsg(nick + ": " + str);
+
                             if(str.equals("/end")) {
                                 out.writeUTF("/serverClosed");
                                 break;
                             }
-                            server.broadcastMsg("Client: " + str);
+
                         }
                     }  catch (IOException e) {
                         e.printStackTrace();
@@ -88,4 +99,5 @@ public class ClientHandler {
             e.printStackTrace();
         }
     }
+
 }
