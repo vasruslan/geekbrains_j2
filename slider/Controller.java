@@ -31,4 +31,9 @@ public class Controller {
         textField.requestFocus();
     }
 
+    public float setTransparent() {
+        System.out.println(slider.getValue());
+        return (float) slider.getValue();
+    }
+
 }
